@@ -11,6 +11,9 @@ jobs:
     # 运行环境：GitHub 免费的 Ubuntu 服务器
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # 新增这行
+
     # 任务步骤（一步步执行）
     steps:
       # 步骤1：拉取代码到服务器
