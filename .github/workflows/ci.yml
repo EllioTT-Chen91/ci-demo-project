@@ -1,0 +1,32 @@
+# 流水线名称（GitHub Actions 页面能看到）
+name: 前端项目自动测试 CI
+
+# 触发条件：推代码到 main 分支时自动运行
+on: push
+
+# 要执行的任务
+jobs:
+  # 任务名：测试
+  run-tests:
+    # 运行环境：GitHub 免费的 Ubuntu 服务器
+    runs-on: ubuntu-latest
+
+    # 任务步骤（一步步执行）
+    steps:
+      # 步骤1：拉取代码到服务器
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      # 步骤2：设置 Node.js 环境（和本地一致）
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # 对应本地 Node 版本
+
+      # 步骤3：安装依赖（这里没额外依赖，但保留步骤，通用）
+      - name: 安装项目依赖
+        run: npm install
+
+      # 步骤4：运行测试（核心！CI 就是要自动跑这个）
+      - name: 执行自动化测试
+        run: npm test
