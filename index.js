@@ -1,7 +1,6 @@
-// 一个简单的加法函数（业务逻辑）
+// 修复后（正确）
 function add(a, b) {
-  return a + b;//对的函数先测试
+  const tax = (a + b) * 0.1;
+  return a + b + tax; // ✅ 改回 + 号
 }
-
-// 导出函数，供测试用
 module.exports = add;
